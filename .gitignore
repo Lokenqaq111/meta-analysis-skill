@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# Editors
+.vscode/
+.idea/
+*.swp

@@ -1,0 +1,4 @@
+study,year,mean_t,sd_t,n_t,mean_c,sd_c,n_c,scale,subgroup
+ExampleSmith,2020,42.1,5.3,30,38.4,6.1,30,6MWT,older
+ExampleChen,2022,45.8,4.9,28,41.2,5.5,29,6MWT,older
+ExampleKim,2023,50.3,6.0,25,46.1,5.8,25,6MWT,younger

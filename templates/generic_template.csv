@@ -1,0 +1,4 @@
+study,year,TE,seTE,subgroup
+ExampleSmith,2020,0.34,0.12,older
+ExampleChen,2022,0.51,0.18,older
+ExampleKim,2023,0.22,0.15,younger

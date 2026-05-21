@@ -1,0 +1,4 @@
+study,year,event_t,n_t,event_c,n_c,subgroup
+ExampleSmith,2020,12,45,20,44,older
+ExampleChen,2022,8,30,15,32,older
+ExampleKim,2023,5,28,9,29,younger

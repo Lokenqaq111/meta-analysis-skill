@@ -1,0 +1,9 @@
+study,treatment,event,n
+ExampleSmith,strength,12,30
+ExampleSmith,aerobic,8,30
+ExampleSmith,control,4,30
+ExampleChen,balance,10,28
+ExampleChen,control,5,28
+ExampleKim,strength,9,25
+ExampleKim,balance,11,25
+ExampleKim,control,6,25
