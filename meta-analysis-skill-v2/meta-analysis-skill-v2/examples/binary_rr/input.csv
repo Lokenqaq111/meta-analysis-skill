@@ -1,0 +1,4 @@
+study,year,event_t,n_t,event_c,n_c,outcome,timepoint,event_is_beneficial,study_design,effect_id,subgroup
+ExampleBinaryA,2020,10,50,15,50,adverse_event,post,false,parallel_rct,binary_a_post,adult
+ExampleBinaryB,2021,8,45,12,44,adverse_event,post,false,parallel_rct,binary_b_post,adult
+ExampleBinaryC,2022,5,40,10,42,adverse_event,post,false,parallel_rct,binary_c_post,older

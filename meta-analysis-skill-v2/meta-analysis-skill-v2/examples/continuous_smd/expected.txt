@@ -1,0 +1,3 @@
+Expected invariant: pooled Hedges' g is positive and falls between 0.20 and 0.75.
+Expected files: data/summary.txt, data/forest_xlim.txt, plots/forest.png, report.md.
+Run: Rscript scripts/run_analysis.R --input examples/continuous_smd/input.csv --mode continuous --measure SMD --outdir output/example-continuous-smd --topic example-continuous-smd
