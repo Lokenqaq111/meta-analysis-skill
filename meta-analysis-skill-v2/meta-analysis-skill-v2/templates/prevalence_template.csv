@@ -1,0 +1,4 @@
+study,year,events,total,profession,body_region,recall_period,country,setting,risk_of_bias,subgroup
+ExampleAlpha,2020,0,50,physiotherapist,low_back,12_month,ExampleCountry,hospital,not_assessed,region_a
+ExampleBeta,2021,1,40,physiotherapist,low_back,12_month,ExampleCountry,clinic,not_assessed,region_a
+ExampleGamma,2022,8,60,occupational_therapist,neck,career,ExampleCountry2,hospital,not_assessed,region_b

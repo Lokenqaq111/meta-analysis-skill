@@ -1,0 +1,4 @@
+study,year,event_t,n_t,event_c,n_c,outcome,timepoint,event_is_beneficial,study_design,effect_id,subgroup
+ExampleSmith,2020,12,45,20,44,adverse_event,post,false,parallel_rct,smith2020_post,older
+ExampleChen,2022,8,30,15,32,adverse_event,post,false,parallel_rct,chen2022_post,older
+ExampleKim,2023,5,28,9,29,adverse_event,post,false,parallel_rct,kim2023_post,younger

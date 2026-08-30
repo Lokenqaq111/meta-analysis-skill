@@ -1,0 +1,7 @@
+study,treatment,event,n,mean,sd,outcome,scale,unit,timepoint,higher_is_better,study_design,effect_id,subgroup
+ExampleNmaA,strength,12,30,,,response,,,post,,parallel_rct,nma_a_response,adult
+ExampleNmaA,control,7,30,,,response,,,post,,parallel_rct,nma_a_response,adult
+ExampleNmaB,aerobic,10,28,,,response,,,post,,parallel_rct,nma_b_response,adult
+ExampleNmaB,control,6,28,,,response,,,post,,parallel_rct,nma_b_response,adult
+ExampleNmaC,strength,11,26,,,response,,,post,,parallel_rct,nma_c_response,older
+ExampleNmaC,aerobic,9,26,,,response,,,post,,parallel_rct,nma_c_response,older

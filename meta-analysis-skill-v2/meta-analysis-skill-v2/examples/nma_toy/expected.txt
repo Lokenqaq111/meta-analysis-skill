@@ -1,0 +1,3 @@
+All values are synthetic Example* data.
+Expected invariant: the three-treatment network is connected, netgraph/forest/netheat are requested, and default ranking output is named P-score rather than SUCRA.
+Run: Rscript scripts/run_analysis.R --input examples/nma_toy/input.csv --mode network --measure RR --outdir output/example-nma --topic example-nma --reference control --ranking P-score
