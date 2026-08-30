@@ -9,6 +9,7 @@ V2 provides a technical frequentist network-meta-analysis workflow; it does not 
 - Connectivity is checked before modelling.
 - If the network is disconnected, only the largest connected component is analysed and every dropped treatment is named in notes and the report. If that component has fewer than three studies, the analysis stops.
 - Outputs request `netgraph`, a treatment-effect forest relative to the reference arm, `netheat`, and `netsplit` when exported by the installed package.
+- Arm-level data are converted with `pairwise()` from `meta` when that export exists (current netmeta releases moved it there), otherwise from `netmeta`.
 
 ## Ranking terminology
 

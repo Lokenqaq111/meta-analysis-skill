@@ -29,6 +29,9 @@ run_pairwise_prevalence <- function(dat, measure, outdir, model_type = "random")
     random = identical(model_type, "random"), method.tau = "REML",
     method.random.ci = "HK", prediction = identical(model_type, "random")
   )
+  # Current meta defaults PLOGIT to GLMM, which only accepts method.tau = "ML".
+  # The documented V2 main analysis is inverse-variance PLOGIT + REML + HK.
+  if ("method" %in% metaprop_formals) call_args$method <- "Inverse"
   if ("incr" %in% metaprop_formals) call_args$incr <- 0.5
   if ("method.incr" %in% metaprop_formals) call_args$method.incr <- "only0"
   model <- do.call(meta::metaprop, call_args)

@@ -12,7 +12,7 @@ study,year,events,total,profession,body_region,recall_period,country,setting,ris
 
 ## Main analysis
 
-The main analysis uses `meta::metaprop()` with logit-transformed proportions (`PLOGIT`), REML for random-effects heterogeneity, and the current Hartung-Knapp API when available.
+The main analysis uses `meta::metaprop()` with logit-transformed proportions (`PLOGIT`), the inverse-variance method, REML for random-effects heterogeneity, and the current Hartung-Knapp API when available. Current `meta` versions default PLOGIT to a GLMM that only accepts `method.tau = "ML"`; V2 therefore sets `method = "Inverse"` so the documented REML/HK analysis can run.
 
 For studies with 0% or 100% prevalence, the inverse-variance PLOGIT call requests a 0.5 continuity correction for boundary studies only (`method.incr = "only0"`) when the installed package exposes those arguments. The report records this rule.
 

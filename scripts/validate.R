@@ -56,7 +56,7 @@ validate_data <- function(dat, mode, measure, target_higher_is_better = NULL,
   add_warning <- function(message) warnings <<- c(warnings, message)
 
   if (!nrow(dat)) add_error("The CSV has no data rows.")
-  common_required <- c("study", "year")
+  common_required <- c("study")
   missing_common <- setdiff(common_required, names(dat))
   if (length(missing_common)) add_error(paste("Missing required columns:", paste(missing_common, collapse = ", ")))
   if (length(errors)) {

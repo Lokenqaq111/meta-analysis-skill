@@ -1,55 +1,57 @@
-V2_VERIFIED=NO
-
 # Environment Report
 
-Generated: 2026-08-29 UTC
+Generated: 2026-08-30 04:14:47 UTC
 
-## Gate decision
-
-- Branch: **C**
-- R is unavailable in the current runtime. All V2 files will still be implemented.
-- Package-dependent analysis tests must be marked `BLOCKED`; no claim of a runtime-verified analysis pipeline is permitted.
+V2_VERIFIED=YES
 
 ## Runtime
 
-- OS: Ubuntu 24.04.3 LTS, Linux 6.18.35, x86_64
-- Repository writable: YES (a temporary probe file was created and removed successfully)
-- R executable: NOT FOUND
-- Rscript executable: NOT FOUND
-- `R --version`: BLOCKED because R is not installed
+- OS: sysname=Linux; release=6.12.94+; version=#1 SMP PREEMPT_DYNAMIC Fri Aug 28 16:08:20 UTC 2026; nodename=cursor; machine=x86_64; login=unknown; user=ubuntu; effective_user=ubuntu
+- R executable: /usr/lib/R/bin/R
+- R version: R version 4.3.3 (2024-02-29)
+- Repository writable: YES
+- R library paths: /home/ubuntu/R/x86_64-pc-linux-gnu-library/4.3; /usr/local/lib/R/site-library; /usr/lib/R/site-library; /usr/lib/R/library
+- Writable R library available: YES
+- Package installation attempted: NO (installation requires explicit user consent).
 
-## Required R packages
+## Required packages
 
-| Package | Installed | Version |
-|---|---:|---|
-| `meta` | BLOCKED | R unavailable |
-| `metafor` | BLOCKED | R unavailable |
-| `netmeta` | BLOCKED | R unavailable |
+- `meta`: 8.5.0
+- `metafor`: 5.0.1
+- `netmeta`: 3.6.1
 
-## Installed-package API evidence
+## `meta` API evidence
 
-- `meta`: BLOCKED. The installed help/source cannot be inspected because R is unavailable. V2 code must avoid `hakn = TRUE`; `scripts/check_env.R` will verify `method.random.ci` and record installed help evidence when rerun in an R environment.
-- `netmeta`: BLOCKED. Runtime registration of `forest.netmeta`, absence/presence of `forest.netrank`, and `netrank()` support for P-score/SUCRA cannot be verified here. `scripts/check_env.R` contains those runtime checks.
-- External reviews are not treated as runtime evidence in this report.
+- `metacont()` has `method.random.ci`: TRUE
+- `metacont()` has `hakn`: FALSE
+- Installed help/source evidence:
+  - method.random.ci = gs("method.random.ci"),
+  - adhoc.hakn.ci = gs("adhoc.hakn.ci"),
+  - adhoc.hakn.pi = gs("adhoc.hakn.pi"),
+  - adhoc.hakn,
+  - method.random.ci: A character string indicating which method is used to
+  - adhoc.hakn.ci: A character string indicating whether an _ad hoc_
+  - adhoc.hakn.pi: A character string indicating whether an _ad hoc_
+  - adhoc.hakn: Deprecated argument (replaced by 'adhoc.hakn.ci').
 
-## Write and installation capability
+## `netmeta` API evidence
 
-- File writes in the repository: YES
-- R package installation: NO in this environment because R is unavailable
-- Installation attempted: NO
-- No package installation was performed or requested silently.
+- `netrank()` has `method`: TRUE
+- `forest.netmeta` registered: TRUE
+- `forest.netrank` registered: FALSE
+- Installed help mentions P-score: TRUE
+- Installed help mentions SUCRA: TRUE
 
-## Verification command for an R environment
+## Gate decision
 
-After installing R, run the following from the repository root. The first command rewrites this report with actual installed-package versions and API evidence; the second runs the complete test suite.
+- Branch: A
+- Independent retest on 2026-08-30: `scripts/check_env.sh` then `tests/run_all.sh` completed with 10/10 R tests PASS, 0 FAIL, 0 BLOCKED. `V2_VERIFIED=YES`.
+- Static Python suite (`python3 tests/static_tests.py`) also completed with 0 FAIL when run separately after the R suite.
 
-```bash
-scripts/check_env.sh
-tests/run_all.sh
-```
+## Independent runtime fixes required for YES
 
-If packages are missing, review the rewritten report and obtain user approval before running:
+The uploaded V2 tree failed `test_prevalence.R` and `test_nma_api.R` until the following API/schema mismatches were fixed:
 
-```r
-install.packages(c("meta", "metafor", "netmeta"))
-```
+- Prevalence: current `meta` defaults PLOGIT to GLMM, which rejects `method.tau = "REML"`. Main analysis now requests `method = "Inverse"` so the documented REML/HK PLOGIT path can run.
+- Network validation: `year` was required for every mode. The data dictionary only requires year for pairwise/prevalence; network templates do not have that column.
+- Network engine: `pairwise()` now lives in `meta`, and `netmeta::netmeta()` accepts `method.random.ci` of `classic`/`t-dist`, not `HK`.

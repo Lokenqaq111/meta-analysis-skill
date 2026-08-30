@@ -15,6 +15,9 @@ V2 replaces prompt-generated analysis code with repository-owned, parameterized 
 
 ### Fixed
 
+- Prevalence PLOGIT now requests the inverse-variance method so REML/Hartung-Knapp can run on current `meta` releases that default PLOGIT to GLMM/`method.tau = "ML"`.
+- Network validation no longer requires `year`, matching the data dictionary and network templates.
+- NMA resolves `pairwise()` from `meta` when `netmeta` no longer exports it, and uses `method.random.ci = "t-dist"` when installed `netmeta` rejects `"HK"`.
 - Removed hard-coded forest x limits; limits now cover model estimates, confidence limits, and available prediction limits.
 - Replaced deprecated `hakn = TRUE` calls with runtime-checked `method.random.ci = "HK"` usage.
 - Gated funnel/Baujat/radial/drapery/leave-one-out and small-study tests using unique study count.

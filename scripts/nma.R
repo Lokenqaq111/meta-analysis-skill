@@ -36,7 +36,17 @@ run_nma <- function(dat, measure, outdir, model_type = "random", reference = NUL
     pairwise_args$mean <- dat$mean
     pairwise_args$sd <- dat$sd
   }
-  pairwise_data <- do.call(netmeta::pairwise, pairwise_args)
+  pairwise_ns <- if ("pairwise" %in% getNamespaceExports("meta")) {
+    "meta"
+  } else if ("pairwise" %in% getNamespaceExports("netmeta")) {
+    "netmeta"
+  } else {
+    NA_character_
+  }
+  if (is.na(pairwise_ns)) {
+    stop("Neither `meta::pairwise` nor `netmeta::pairwise` is available in the installed packages.", call. = FALSE)
+  }
+  pairwise_data <- do.call(getExportedValue(pairwise_ns, "pairwise"), pairwise_args)
   nma_args <- list(
     TE = pairwise_data$TE, seTE = pairwise_data$seTE,
     treat1 = pairwise_data$treat1, treat2 = pairwise_data$treat2,
@@ -46,7 +56,18 @@ run_nma <- function(dat, measure, outdir, model_type = "random", reference = NUL
     method.tau = "REML"
   )
   nma_formals <- names(formals(netmeta::netmeta))
-  if ("method.random.ci" %in% nma_formals) nma_args$method.random.ci <- "HK"
+  if ("method.random.ci" %in% nma_formals) {
+    nma_help <- tryCatch(
+      paste(capture.output(tools::Rd2txt(utils:::.getHelpFile(help("netmeta", package = "netmeta")))), collapse = "\n"),
+      error = function(e) ""
+    )
+    if (grepl("\"HK\"", nma_help, fixed = TRUE) || grepl("method.random.ci = \"HK\"", nma_help, fixed = TRUE)) {
+      nma_args$method.random.ci <- "HK"
+    } else if (grepl("t-dist", nma_help, fixed = TRUE)) {
+      nma_args$method.random.ci <- "t-dist"
+      notes <- c(notes, "Installed netmeta does not accept method.random.ci='HK'; used 't-dist' for t-based random-effects CIs.")
+    }
+  }
   model <- do.call(netmeta::netmeta, nma_args)
   writeLines(capture.output(summary(model)), file.path(outdir, "data", "summary.txt"))
   write.csv(dat, file.path(outdir, "data", "analysis_data.csv"), row.names = FALSE)
