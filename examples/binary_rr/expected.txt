@@ -1,0 +1,3 @@
+Expected invariant: pooled RR is below 1 and above 0.2.
+Expected files: data/summary.txt, plots/forest.png, plots/labbe.png, report.md.
+Run: Rscript scripts/run_analysis.R --input examples/binary_rr/input.csv --mode binary --measure RR --outdir output/example-binary-rr --topic example-binary-rr

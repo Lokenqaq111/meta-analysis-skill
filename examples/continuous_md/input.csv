@@ -1,0 +1,4 @@
+study,year,mean_t,sd_t,n_t,mean_c,sd_c,n_c,outcome,scale,unit,timepoint,higher_is_better,change_or_final,study_design,effect_id,subgroup
+ExampleDelta,2021,430,60,40,410,55,40,walking_distance,6MWT,m,post,true,final,parallel_rct,delta_post,adult
+ExampleEpsilon,2022,470,65,35,435,62,35,walking_distance,6MWT,m,post,true,final,parallel_rct,epsilon_post,adult
+ExampleZeta,2023,500,70,30,450,68,30,walking_distance,6MWT,m,post,true,final,parallel_rct,zeta_post,older

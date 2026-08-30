@@ -1,0 +1,4 @@
+study,year,mean_t,sd_t,n_t,mean_c,sd_c,n_c,outcome,scale,unit,timepoint,higher_is_better,change_or_final,study_design,effect_id,subgroup
+ExampleAlpha,2021,18,4,40,15,5,40,function,A_scale,points,post,true,final,parallel_rct,alpha_post,adult
+ExampleBeta,2022,72,12,35,65,11,35,function,B_scale,points,post,true,final,parallel_rct,beta_post,adult
+ExampleGamma,2023,31,7,30,28,8,30,function,C_scale,points,post,true,final,parallel_rct,gamma_post,older

@@ -1,0 +1,4 @@
+All values are synthetic Example* data.
+Expected invariant: pooled prevalence and confidence limits are reported on a 0–1 scale internally and 0–100% in report.md.
+Expected boundary behavior: studies with 0/50 and 60/60 are retained under the documented continuity-correction rule; the run does not fail.
+Run: Rscript scripts/run_analysis.R --input examples/prevalence_toy/input.csv --mode prevalence --measure PLOGIT --outdir output/example-prevalence --topic example-prevalence

@@ -1,0 +1,4 @@
+study,year,mean_t,sd_t,n_t,mean_c,sd_c,n_c,outcome,scale,unit,timepoint,higher_is_better,change_or_final,study_design,effect_id,subgroup
+MultiArmA,2020,20,4,30,15,5,30,function,scale_a,points,post,true,final,parallel_rct,multi_a_arm1,adult
+MultiArmA,2020,22,4,30,15,5,30,function,scale_a,points,post,true,final,parallel_rct,multi_a_arm2,adult
+StudyB,2021,24,5,30,18,5,30,function,scale_a,points,post,true,final,parallel_rct,study_b,adult
