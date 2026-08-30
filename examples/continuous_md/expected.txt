@@ -1,0 +1,3 @@
+Expected invariant: pooled mean difference is positive and falls between 20 and 50 metres.
+Expected x-axis invariant: data/forest_xlim.txt includes every estimate and confidence limit and is not restricted to an SMD-sized range.
+Run: Rscript scripts/run_analysis.R --input examples/continuous_md/input.csv --mode continuous --measure MD --outdir output/example-continuous-md --topic example-continuous-md

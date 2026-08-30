@@ -9,6 +9,9 @@
 .Rproj.user/
 *.Rproj
 
+# Local analysis outputs
+output/
+
 # Editors
 .vscode/
 .idea/
